@@ -19,12 +19,25 @@ public class Feladat {
             dolgozo.azonosito = Integer.parseInt(lineArray[0]);
             dolgozo.nev = (lineArray[1]);
             dolgozo.varos = (lineArray[2]);
-            dolgozo.varos = (lineArray[3]);
+            dolgozo.hazszam = (lineArray[3]);
             dolgozo.fizetes = Integer.parseInt(lineArray[4]);
             dolgozo.szuletes = (lineArray[5]);
+
             this.dolgozokLista.add(dolgozo);
             System.out.println(line);
         }
         sc.close();
+    }
+
+    public int osszegSzolnokDolgozokFizetese() {
+        int osszeg = 0;
+        for (Dolgozok dolgozo : dolgozokLista) {
+            if (dolgozo.varos.equals("Szolnok")) {
+                osszeg = dolgozo.fizetes + osszeg;
+            }
+        }
+        System.out.println();
+        System.out.println("Az összes Szolnoki Fizetése: " + osszeg);
+        return osszeg;
     }
 }
